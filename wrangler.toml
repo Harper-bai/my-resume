@@ -2,4 +2,4 @@ name = "my-resume"
 compatibility_date = "2025-04-15"
 
 [site]
-bucket = "./"   # 因为 index.html 就在根目录
+bucket = "."   # 因为 index.html 就在根目录
