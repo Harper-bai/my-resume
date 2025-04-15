@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shan Bai</title> 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            background-color: #f6f7f9; /* Light gray background, common on read.cv */
+            color: #111827; /* Darker text for better contrast */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased; /* Smoother fonts */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 720px; /* Common content width */
+            margin: 60px auto; /* Center container with top/bottom margin */
+            padding: 0 20px; /* Padding on smaller screens */
+        }
+
+        .card {
+            background: #ffffff; /* White card */
+            border-radius: 16px; /* Slightly softer corners like read.cv */
+            padding: 40px; /* Generous padding inside card */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+        }
+
+        /* Profile Section */
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 24px; /* Slightly more gap */
+            margin-bottom: 40px; /* Space below profile section */
+        }
+
+        .profile img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info h1 {
+            margin: 0 0 4px 0; /* Add small bottom margin */
+            font-size: 26px; /* Slightly larger name */
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .profile-info p {
+            margin: 0; /* Reset margin */
+            color: #6b7280; /* Gray for subtitle */
+            font-size: 16px;
+        }
+
+        .profile-links {
+             margin-top: 12px; /* Space above links/buttons */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #f3f4f6; /* Lighter gray button like read.cv tags */
+            color: #374151; /* Darker gray text for button */
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            margin-right: 8px; /* Space between buttons/links */
+            margin-bottom: 8px; /* Allow wrapping */
+        }
+        .button:hover {
+            background-color: #e5e7eb; /* Slightly darker on hover */
+        }
+
+        /* Section Headers */
+        h2 {
+            margin-top: 40px; /* Space above section title */
+            margin-bottom: 24px; /* Space below section title */
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            border-bottom: 1px solid #e5e7eb; /* Lighter border */
+            padding-bottom: 10px; /* More padding below text */
+        }
+
+        .section p, .section ul {
+             margin-top: 0; /* Reset top margin for paragraphs/lists within sections */
+             margin-bottom: 16px; /* Consistent bottom margin */
+             color: #374151; /* Slightly lighter text for body */
+             font-size: 16px;
+        }
+        .section p:last-child, .section ul:last-child {
+             margin-bottom: 0; /* Remove margin for last element in section */
+        }
+
+        em {
+            font-style: italic; /* Ensure text is italicized */
+            color: #4b5563;     /* Use a medium gray for subtle emphasis, slightly different from main text */
+             /* You generally don't need to change font-weight or font-size for simple emphasis */
+        }
+
+        /* Generic Item Styling (for Experience, Projects, Education etc.) */
+        .item {
+            margin-bottom: 28px; /* More space between items */
+        }
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px; /* Space between header and subheader */
+        }
+
+        .item-header .title {
+            font-size: 17px; /* Slightly larger item title */
+            font-weight: 600; /* Bolder title */
+            color: #111827;
+        }
+
+        .item-header .date {
+            font-size: 14px;
+            color: #6b7280; /* Gray for dates */
+            font-weight: 400; /* Regular weight */
+            flex-shrink: 0; /* Prevent date from shrinking */
+            padding-left: 16px; /* Ensure space between title and date */
+        }
+
+        .item-subheader {
+            color: #4b5563; /* Slightly darker gray for subheader */
+            font-size: 15px;
+            font-weight: 500; /* Medium weight */
+            margin-bottom: 8px;
+        }
+
+        .item p, .item ul {
+            margin-top: 8px;
+            color: #374151;
+            font-size: 15px; /* Slightly smaller for descriptions */
+        }
+
+        .item ul {
+            padding-left: 20px;
+            list-style: disc;
+        }
+        .item li {
+            margin-bottom: 6px; /* Space between list items */
+        }
+        .item li::marker {
+            color: #9ca3af; /* Lighter gray for list bullets */
+        }
+
+        /* Links within item descriptions or general text */
+         .item a, .section a:not(.button) { /* Exclude buttons from this style */
+            color: #111827; /* Dark text color for links */
+            text-decoration: underline; /* Underline links by default */
+            text-decoration-thickness: 1px; /* Thinner underline */
+            text-underline-offset: 2px; /* Space between text and underline */
+        }
+        .item a:hover, .section a:not(.button):hover {
+            color: #000000; /* Black on hover */
+            text-decoration-thickness: 1.5px; /* Slightly thicker underline on hover */
+        }
+
+        /* Specific List Styling (Awards, Certs, Contact) */
+        .list-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Reset list margin */
+        }
+        .list-section li {
+            margin-bottom: 10px; /* Space between list items */
+            font-size: 15px;
+            color: #374151;
+        }
+         .list-section li strong { /* For Award/Cert name */
+             font-weight: 500;
+             color: #111827;
+         }
+         .list-section li span { /* For Issuer/Date */
+            color: #6b7280;
+            font-size: 14px;
+         }
+
+        /* Contact List Specifics */
+        .contact-list li {
+             display: flex;
+             align-items: center;
+             gap: 8px; /* Space between icon/label and link */
+        }
+        .contact-list strong { /* e.g., "Email:" */
+            font-weight: 500;
+            color: #111827;
+            min-width: 60px; /* Align links */
+        }
+        .contact-list a {
+            color: #111827;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            font-weight: 400;
+        }
+        .contact-list a:hover {
+            color: #000000;
+             text-decoration-thickness: 1.5px;
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 640px) {
+            .container {
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            .card {
+                padding: 30px; /* Reduce padding on small screens */
+                border-radius: 12px;
+            }
+            .profile {
+                flex-direction: column; /* Stack profile items */
+                align-items: flex-start; /* Align left */
+                gap: 16px;
+            }
+            .profile-info h1 {
+                font-size: 24px;
+            }
+            .item-header {
+                flex-direction: column; /* Stack title and date */
+                align-items: flex-start;
+                gap: 2px;
+            }
+            .item-header .date {
+                padding-left: 0; /* Remove padding when stacked */
+                 font-size: 13px;
+            }
+             h2 {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            .section p, .section ul, .item p, .item ul, .list-section li {
+                font-size: 15px; /* Consistent font size on mobile */
+            }
+        }
+            
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+
+            <div class="profile">
+                <img src="https://images.harperby.cloudns.be/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_2025-04-09_122831_720.jpg" alt="Profile Picture"> 
+                <div class="profile-info">
+                    <h1>Shan Bai</h1> 
+                    <p>Full Stack Developer / Hangzhou</p> 
+                    <div class="profile-links">
+                         <a class="button" href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer">Personal Web</a> 
+                        <!--<a class="button" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a> {/* Replace */}--> 
+                         <a class="button" href="https://github.com/Harper-bai" target="_blank" rel="noopener noreferrer">GitHub</a> 
+                    </div>
+                </div>
+            </div>
+
+            <h2>About</h2>
+            <div class="section about">
+                <!--A brief introduction about yourself. Mention your key skills, passion, or career focus. Keep it concise and engaging.-->
+                <p>I am a passionate reader and writer who believes in the power of individuals to create value and change the world.</p>
+                <!--You can add another paragraph here to elaborate on your professional philosophy or interests. For example: <em>Driven by curiosity and a passion for building intuitive user experiences.</em>-->
+                <p>I think beyond boundaries, explore across disciplines, and remain driven by curiosity and critical thought.My motto: <em>Let everything happen</em>.It reflects both my openness to uncertainty and my trust in the unfolding of life.</p>
+            </div>
+
+            <h2>Work Experience</h2>
+            <div class="section experience">
+                <div class="item">
+                    <div class="item-header">
+                        <span class="title">Product Intern</span>
+                        <span class="date">March, 2025 — June, 2025</span> 
+                    </div>
+                    <div class="item-subheader">Mobile App Development Company, Hangzhou</div> 
+                    <ul>
+                        <li>Researched and analyzed competitors to provide insights for product differentiation and roadmap planning.</li>
+                        <li>Designed core aspects of a paid feature, specifically modelling a milestone payment flow based on platforms like Upwork.</li>
+                        <li>Played a key role in shaping the homepage design by contributing user-focused ideas and requirements.</li>
+                        <li>Collaborated effectively with Design/Development teams to translate product ideas into actionable requirements.</li>
+                        <li>Saw the majority of proposed suggestions for features and usability improvements integrated into the final product before its launch.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Side Projects</h2>
+            <div class="section project">
+                <div class="item">
+                    <div class="item-header">
+                        <span class="title">JustADD - Chrome Extension</span>
+                        <span class="date">2024</span> 
+                    </div>
+                    <div class="item-subheader">
+                        <a href="https://github.com/Harper-bai/JustADD" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                    </div>
+                    <div>
+                    <ul>
+                        <li>Developed a Chrome browser extension using JavaScript, HTML, and CSS to enable users to efficiently save and manage text snippets from webpages.</li>
+                        <li>Implemented core features including one-click saving of selected text via keyboard shortcuts (customizable, default Ctrl/Cmd+Shift+S) or context menus.</li>
+                        <li>Created the extension's popup interface for users to view, manage (e.g., delete), and export their saved text snippets.</li>
+                        <li>Utilized Chrome Extension APIs for browser interaction (shortcuts, storage) and ensured user privacy by storing all data locally.</li>
+                    </ul>
+                   </div>
+                </div>
+<!--
+                 <div class="item">
+                    <div class="item-header">
+                        <span class="title">[Project Name B]</span>
+                        <span class="date">[Year]</span>
+                    </div>
+                    <p>Description of another project, perhaps highlighting different skills.</p>
+                </div>
+            </div>
+ -->
+            <h2>Education</h2>
+            <div class="section education">
+                 <div class="item">
+                    <div class="item-header">
+                        <span class="title">B.S. in Law</span> 
+                        <span class="date">2022 — 2026</span>
+                    </div>
+                    <div class="item-subheader">Zhejiang University</div>
+                    <!--<p>(Optional) Include relevant coursework, thesis topic, GPA (if high), or honors.</p> -->
+                </div>
+<!--
+                 <div class="item">
+                    <div class="item-header">
+                        <span class="title">M.S. in Computer Science</span> 
+                        <span class="date">2027 — 2029</span>
+                    </div>
+                    <div class="item-subheader">Georgia Institute of Technology</div>
+                 </div>-->
+            </div>
+
+            <h2>Awards</h2>
+            <div class="section awards list-section"> 
+                <ul>
+                   <li><strong>National Endeavor Scholarship</strong> - <span>Ministry of Education of P.R. China, 2023 - 2024</span></li>
+                   <li><strong>University Scholarship (Third Prize)</strong> - <span> Zhejiang University, 2022 - 2023</span></li>
+                </ul>
+            </div>
+
+            <h2>Certifications</h2>
+            <div class="section certifications list-section"> 
+                <ul>
+                   <li><strong>College English Test Band 6(CET-6)</strong> - <span>563 pts, 2024</span> </li>
+                </ul>
+             </div>
+
+            <h2>Contact</h2>
+            <div class="section contact list-section">
+                <ul class="contact-list">
+                    <li><strong>Email:</strong> <a href="mailto:h7451392@gmail.com">h7451392@gmail.com</a></li> 
+                    <li><strong>Twitter:</strong> <a href="https://x.com/HarperBai02" target="_blank" rel="noopener noreferrer">HarperBai</a></li> 
+                    <li><strong>Telegram:</strong> <a href="https://t.me/HarperBai" target="_blank" rel="noopener noreferrer">HarperBai</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
